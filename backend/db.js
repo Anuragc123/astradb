@@ -1,7 +1,7 @@
 import { DataAPIClient } from "@datastax/astra-db-ts";
 import dotenv from "dotenv";
 
-dotenv.config({path: '../.env'});
+dotenv.config({ path: "../.env" });
 
 const client = new DataAPIClient(process.env.ASTRA_DB_TOKEN);
 const db = client.db(process.env.ASTRA_DB_URL);
