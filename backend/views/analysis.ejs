@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1>Post Performance Analysis</h1>
+    <table border="2">
+      <thead>
+        <tr>
+          <th>Post Type</th>
+          <th>Average Likes</th>
+          <th>Average Shares</th>
+          <th>Average Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(row => { %>
+        <tr>
+          <td><%= row.postType %></td>
+          <td><%= row.avgLikes %></td>
+          <td><%= row.avgShares %></td>
+          <td><%= row.avgComments %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <h2>Insights</h2>
+    <% insights.forEach(element => { %>
+
+    <p><%= element %></p>
+    <% }) %>
+    <div><a href="/">Back to Home</a></div>
+  </body>
+</html>

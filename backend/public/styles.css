@@ -1,0 +1,90 @@
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Header Styling */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #0056b3;
+  margin-top: 20px;
+}
+
+div {
+  /* width: 100vw; */
+  display: flex;
+  justify-content: center;
+}
+
+/* Links */
+a {
+  display: inline-block;
+  background-color: #0056b3;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+a:hover {
+  background-color: #003d82;
+}
+
+/* Table Styling */
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+table thead {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+table tr:nth-child(even) {
+  background-color: #f4f4f9;
+}
+
+/* Button Styling */
+button {
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #003d82;
+}
+
+/* Insights Section */
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 0 auto 20px;
+  width: 80%;
+  line-height: 1.6;
+  text-align: center;
+}
