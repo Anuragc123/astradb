@@ -20,7 +20,9 @@ function Welcome() {
             View Sample Analysis
           </Link>
         </div>
-        <UserInputForm />
+        <div className="flex justify-center">
+          <UserInputForm />
+        </div>
       </div>
     </div>
   );

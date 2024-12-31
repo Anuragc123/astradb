@@ -4,7 +4,6 @@ import LangflowClient from "../langflow.js";
 import cors from "cors";
 
 async function analyseData(data) {
-  
   // console.log("Data in analyseData=",data)
   const analysis = {};
   data.forEach((post) => {
@@ -76,7 +75,7 @@ router.get("/analysis", async (req, res) => {
   try {
     const postsCollection = db.collection("posts");
     const data = await postsCollection.find({}).toArray();
-    
+
     // console.log("Data in get route",data)
     // console.log(typeof data)
 
@@ -84,7 +83,6 @@ router.get("/analysis", async (req, res) => {
 
     // console.log("Langflow response: ",insights2);
 
-   
     res.json({ data: results, insights2 });
   } catch (error) {
     console.error("Error fetching data:", error);
