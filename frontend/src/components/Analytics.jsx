@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Analytics() {
   const [analyticsData, setAnalyticsData] = useState(null);
   const [insights, setInsights] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const fetchAnalytics = async () => {
+  const fetchAnalytics = async (userData = null) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get("http://localhost:3000/posts/analysis");
-      // console.log(response.data);
-
+      let response;
+      if (userData) {
+        response = await axios.post("http://localhost:3000/posts/analysis", {
+          data: userData,
+        });
+      } else {
+        response = await axios.get("http://localhost:3000/posts/analysis");
+      }
       setAnalyticsData(response.data.data);
       setInsights(response.data.insights2);
     } catch (err) {
@@ -25,8 +33,13 @@ function Analytics() {
   };
 
   useEffect(() => {
-    fetchAnalytics();
-  }, []);
+    const userData = location.state?.userData;
+    if (userData) {
+      fetchAnalytics(userData);
+    } else {
+      fetchAnalytics();
+    }
+  }, [location.state]);
 
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
@@ -73,25 +86,31 @@ function Analytics() {
 
             {insights && (
               <div className="mt-6">
-                <h2 className="text-xl font-semibold mb-2">Insight:</h2>
+                <h2 className="text-xl font-semibold mb-2">Insights:</h2>
                 <ul className="list-disc pl-4">
-                  {insights.map((insight, index) => {
-                    return (
-                      <li key={index} className="text-gray-700 ">
-                        {insight}
-                      </li>
-                    );
-                  })}
+                  {insights.map((insight, index) => (
+                    <li key={index} className="text-gray-700">
+                      {insight}
+                    </li>
+                  ))}
                 </ul>
               </div>
             )}
 
-            <button
-              onClick={fetchAnalytics}
-              className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            >
-              Refresh Analytics
-            </button>
+            <div className="mt-6 flex justify-between">
+              <button
+                onClick={() => fetchAnalytics()}
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              >
+                Refresh Analytics
+              </button>
+              <button
+                onClick={() => navigate("/")}
+                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+              >
+                Back to Home
+              </button>
+            </div>
           </div>
         </div>
       </div>
