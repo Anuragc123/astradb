@@ -73,7 +73,7 @@ function UserInputForm() {
   };
 
   return (
-    <div className="mt-10 max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8">
+    <div className="mt-6 max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8">
       <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">
         Upload Your Data
       </h2>
