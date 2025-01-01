@@ -23,7 +23,7 @@ function Analytics() {
         response = await axios.get("http://localhost:3000/posts/analysis");
       }
       setAnalyticsData(response.data.data);
-      setInsights(response.data.insights2);
+      setInsights(response.data.insights);
     } catch (err) {
       setError("Failed to fetch analytics data");
       console.error(err);
@@ -64,7 +64,7 @@ function Analytics() {
                       <th className="px-4 py-2">Post Type</th>
                       <th className="px-4 py-2">Avg Likes</th>
                       <th className="px-4 py-2">Avg Shares</th>
-                      <th className="px-4 py-2">Avg Comments</th>
+                      <th className="px-4 py-2">Positive Rate</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -76,7 +76,7 @@ function Analytics() {
                         <td className="border px-4 py-2">{row.postType}</td>
                         <td className="border px-4 py-2">{row.avgLikes}</td>
                         <td className="border px-4 py-2">{row.avgShares}</td>
-                        <td className="border px-4 py-2">{row.avgComments}</td>
+                        <td className="border px-4 py-2">{row.allComments}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -98,7 +98,6 @@ function Analytics() {
             )}
 
             <div className="mt-6 flex justify-center">
-              
               <button
                 onClick={() => navigate("/")}
                 className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"

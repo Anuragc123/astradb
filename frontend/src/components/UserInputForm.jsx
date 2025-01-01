@@ -45,7 +45,7 @@ function UserInputForm() {
             row.postType &&
             typeof row.likes === "number" &&
             typeof row.shares === "number" &&
-            typeof row.comments === "number"
+            typeof row.comments === "object"
         );
       } else {
         throw new Error("Unsupported file format. Please use JSON or CSV.");
@@ -62,13 +62,12 @@ function UserInputForm() {
     }
   };
 
-
   const isValidDataPoint = (data) => {
     return (
       typeof data.postType === "string" &&
       typeof data.likes === "number" &&
       typeof data.shares === "number" &&
-      typeof data.comments === "number"
+      typeof data.comments === "object"
     );
   };
 
