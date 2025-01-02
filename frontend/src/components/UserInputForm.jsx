@@ -37,16 +37,33 @@ function UserInputForm() {
             complete: resolve,
             error: reject,
             dynamicTyping: true,
+            skipEmptyLines: true,
           });
         });
 
-        parsedData = result.data.filter(
-          (row) =>
-            row.postType &&
-            typeof row.likes === "number" &&
-            typeof row.shares === "number" &&
-            typeof row.comments === "object"
-        );
+        // console.log("result=", result);
+
+        const parseComments = (comments) => {
+          try {
+            return JSON.parse(comments);
+          } catch (err) {
+            console.error("Error parsing comments:", comments, err);
+            return [];
+          }
+        };
+
+        parsedData = result.data
+          .map((row) => ({
+            ...row,
+            comments: parseComments(row.comments),
+          }))
+          .filter(
+            (row) =>
+              row.postType &&
+              typeof row.likes === "number" &&
+              typeof row.shares === "number" &&
+              Array.isArray(row.comments)
+          );
       } else {
         throw new Error("Unsupported file format. Please use JSON or CSV.");
       }
