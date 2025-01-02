@@ -73,10 +73,18 @@ function Analytics() {
                         key={index}
                         className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
                       >
-                        <td className="border px-4 py-2">{row.postType}</td>
-                        <td className="border px-4 py-2">{row.avgLikes}</td>
-                        <td className="border px-4 py-2">{row.avgShares}</td>
-                        <td className="border px-4 py-2">{row.allComments}</td>
+                        <td className="border px-4 py-2 text-center">
+                          {row.postType}
+                        </td>
+                        <td className="border px-4 py-2 text-center">
+                          {row.avgLikes}
+                        </td>
+                        <td className="border px-4 py-2 text-center">
+                          {row.avgShares}
+                        </td>
+                        <td className="border px-4 py-2 text-center">
+                          {row.allComments}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
